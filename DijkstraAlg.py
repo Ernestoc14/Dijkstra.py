@@ -80,3 +80,5 @@ ourGraph.graph = [[0,  8,  9,  4,  0,  0,  0,  0,  0], #0 C
                   ]; 
    
 ourGraph.dijkstra(0)
+
+print("nodes are letters in the begining we have C and the last is B")

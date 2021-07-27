@@ -1,6 +1,6 @@
 # ALGORITMO DIJKSTRA PROYECTO ERDD 
 # Dev by Ernesto Crespo => Follow @techbyer en Instagram 
-
+#Hacer Intro Manana Martes // Cambiar variables // Nombres etc Add comments
 class Graph(): 
     # A constructor to iniltialize the values  // Constructor para inicializar los valores
     def __init__(self, nodes):        #Definimos funcion _init_ que tiene parametros self () y nodes () Donde self hace referencia a tomar los atributos del Constructor
@@ -35,7 +35,7 @@ class Graph():
             # visited nodes set
             self.vistSet[u] = True
   
-             # Update dist[v] only if is not in vistSet, there is an edge from 
+            # Update dist[v] only if is not in vistSet, there is an edge from 
             # u to v, and total weight of path from src to  v through u is 
             # smaller than current value of dist[v]
             for v in range(self.V): 

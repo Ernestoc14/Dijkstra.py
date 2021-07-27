@@ -3,7 +3,7 @@
 
 class Graph(): 
     # A constructor to iniltialize the values  // Constructor para inicializar los valores
-    def __init__(self, nodes):        #Definimos funcion _init_ que tiene parametros self () y nodes ()
+    def __init__(self, nodes):        #Definimos funcion _init_ que tiene parametros self () y nodes () Donde self hace referencia a tomar los atributos del Constructor
         #distance array initialization // Inicializacion del array de distancia
         self.distArray = [0 for i in range(nodes)]   #Creacion del Array DistArray con cantidad maxima igual al num de nodos
         #visited nodes initialization   // Inicializacion de nodos visitados
@@ -26,7 +26,6 @@ class Graph():
         #initialise the first distance to 0
         self.distArray[srcNode] = 0
         for i in range(self.V): 
-  
             # Pick the minimum distance node from  
             # the set of nodes not yet processed.  
             # u is always equal to srcNode in first iteration 
@@ -62,9 +61,12 @@ class Graph():
         return min_index
 
     def printSolution(self, distArray): 
-        print ("Node   Distance from 0")
+        print ("Node   Distance from 0 o Nodo")
+        diccionario = { '0':'C', '1':'G', '2':'D', '3':'E', '4':'A', '5':'F', '6':'H', '7':'K', '8':'B'}
         for i in range(self.V): 
-            print (" ", i, "\t\t\t", distArray[i])
+            i=str(i)
+            print(" ",i.replace('0','C').replace('1','G').replace('2','D').replace('3','E').replace('4','A').replace('5','F').replace('6','H').replace('7','K').replace('8','B'),"\t\t\t",distArray[int(i)])
+           # print (" ", i, "\t\t\t", distArray[i])
 #Display our table
 ourGraph = Graph(9) 
                #   C   G   D   E   A   F   H   K   B 
@@ -77,8 +79,5 @@ ourGraph.graph = [[0,  8,  9,  4,  0,  0,  0,  0,  0], #0 C
                   [0,  0,  0,  0,  2,  0,  0,  6, 17], #6 H 
                   [0,  0,  0,  8,  0,  0,  6,  0,  1], #7 K
                   [0,  0,  0,  0,  4, 10, 17,  1,  0], #8 B
-                  ]; 
-   
+                  ];           
 ourGraph.dijkstra(0)
-
-print("nodes are letters in the begining we have C and the last is B")

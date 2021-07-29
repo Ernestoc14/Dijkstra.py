@@ -1,6 +1,6 @@
 # ALGORITMO DIJKSTRA PROYECTO ERDD 
 # Dev by Ernesto Crespo => Follow @techbyer en Instagram 
-#Hacer Intro Manana Martes // Cambiar variables // Nombres etc Add comments
+
 """En este codigo trabajamos el algoritmo Dijkstra en Python y su Implementacion
    como ejemplo de una empresa de Delivery/Servicio de envios.
    Para este caso los nodos del grafo serian las casas de nuestros clientes, el grafo seria el mapa 
@@ -12,12 +12,12 @@ class Graph():
                                #y acceder a los atributos y metodos de una instancia de una clase y nodes es la cantidad de nodos 9
         #Inicializacion del array de distancia
         self.distArray = [0 for i in range(nodes)]  #Creacion del Array DistArray aqui almacenaremos la distancia entre los nodos visitados
-        #visited nodes initialization // Inicializacion de nodos visitados
+        #Inicializacion de nodos visitados
         self.vistSet = [0 for i in range(nodes)]   #Creacion del Array VisitSet donde almacenaremos el nodo de menor distancia de los nodos visitados
-        #initializing the number of nodes  // Inicializacion del numero de nodos
-        self.V = nodes                 # Self.V Sera igual al numero de nodos
+        #Inicializacion del numero de nodos
+        self.V = nodes      # Self.V Sera igual al numero de nodos
         # Inicializacion del Valor Infinito
-        self.INF = 1000000                 #Valor Infinito igual a 1000000  
+        self.INF = 1000000       #Valor Infinito igual a 1000000  
         #Inicializacion de la Matriz de Adyacencia la cual tomamos como entrada en nuestro programa
         self.graph = [[0 for column in range(nodes)]  #Cantidad de Columnas igual a los nodos
                     for row in range(nodes)]          #Cantidad de Filas igual a los nodos
@@ -25,35 +25,36 @@ class Graph():
    
     def dijkstra(self, srcNode): #Funcion Dijkstra donde haremos el algoritmo, parametros self y srcNode que es el Nodo Inicial C o 0
         for i in range(self.V):  #For que va de 0 a 9 donde inicializamos un Array
-          #initialise the distances to infinity first// Inicializamos el distArray al valor infinito // Esto lo hacemos para que cuando compare siempre tome el valor mas pequeño en la primera comparacion
+          #Inicializamos el distArray al valor infinito
+          #Esto lo hacemos para que cuando compare siempre tome el valor mas pequeño en la primera comparacion
           self.distArray[i] = self.INF
-          #set the visited nodes set to false for each node // Inicializamos el valor del visitSet a Falso para que cuando este sea visitado tome el valor de True
+          #Inicializamos el valor del visitSet a Falso para que cuando este sea visitado tome el valor de True
           self.vistSet[i] = False
-        #initialise the first distance to 0 // Inicializamos la distancia del srcNoce (Nodo C) a 0 
+        #Inicializamos la distancia del srcNoce (Nodo C) a 0 
         self.distArray[srcNode] = 0
         for i in range(self.V): #For de 0 a 9 (Cantidad de nodos=self.V)
-            # Pick the minimum distance node from  // Toma el nodo de menor distancia desde
-            # the set of nodes not yet processed.  // el conjunto(array) de nodos no visitados todavia
-            # u is always equal to srcNode in first iteration // U sera siempre igual al srcNode (C) en la primera iteracion
+            # Toma el nodo de menor distancia desde
+            # el conjunto(array) de nodos no visitados todavia
+            # U sera siempre igual al srcNode (C) en la primera iteracion
             u = self.minDistance(self.distArray, self.vistSet) #U toma el valor devuelto por la funcion minDistance
   
-            # Put the minimum distance node in the // Coloca el nodo de menor distancia en 
-            # visited nodes set                     // el conjunto de nodos visitados (visitSet)
-            self.vistSet[u] = True      #Asigna el valor de True al nodo cuando ya ha sido visitado en el Array VisitSet
+            # Coloca el nodo de menor distancia en 
+            # el conjunto de nodos visitados (visitSet)
+            self.vistSet[u] = True    #Asigna el valor de True al nodo cuando ya ha sido visitado en el Array VisitSet
   
-            # Update dist[v] only if is not in vistSet, there is an edge from // Actualizamos distArray[v] solo si no esta en VisitSet, aqui hay una arista desde 
-            # u to v, and total weight of path from src to  v through u is    // u a v, y el peso total del camino desde srcNode a v a traves de u es 
-            # smaller than current value of dist[v]                           // mas pequeño que el valor actual de distArray[v] por lo que se toma este nuevo valor
+            # Actualizamos distArray[v] solo si no esta en VisitSet, aqui hay una arista desde 
+            # u a v, y el peso total del camino desde srcNode a v a traves de u es 
+            # mas pequeño que el valor actual de distArray[v] por lo que se toma este nuevo valor
             for v in range(self.V): 
                 if self.graph[u][v] > 0 and self.vistSet[v] == False and self.distArray[v] > self.distArray[u] + self.graph[u][v]: 
                         self.distArray[v] = self.distArray[u] + self.graph[u][v] 
   
         self.printSolution(self.distArray)  #Llamamos al metodo printSolution y nos llevamos el distArray como parametro
 
-    #A utility function to find the node with minimum distance value, from // Funcion para encontrar el nodo con valor de distancia minima
-    # the set of nodes not yet included in shortest path                   // desde el conjunto de nodos que no esta incluido en el camino mas corto 
+    # Funcion para encontrar el nodo con valor de distancia minima
+    #  desde el conjunto de nodos que no esta incluido en el camino mas corto 
     def minDistance(self, distArray, vistSet): 
-        # Initilaize minimum distance for next node  // Inicializando la distancia minima para el siguiente nodo
+        # Inicializando la distancia minima para el siguiente nodo
         min = self.INF
         # Search not nearest node not in the  // Buscamos el nodo mas cercano en los 
         # unvisited nodes                     // nodos no visitados VisitSet
@@ -63,7 +64,7 @@ class Graph():
                 min_index = v       #min_index toma el valor de v
         return min_index            #Retornamos el valor de min_index
 
-    def printSolution(self, distArray):            #Funcion para mostrar la solucion en pantalla 
+    def printSolution(self, distArray):    #Funcion para mostrar la solucion en pantalla 
         print ("Node   Distance from 0 o Nodo")     
         # For para impresion
         for i in range(self.V): 
@@ -71,6 +72,7 @@ class Graph():
             i=str(i)
             #Aqui reemplazamos la string i por sus valores numericos, reemplazados respectivamente con su correspondiente Nodo (Letra)
             print(" ",i.replace('0','C').replace('1','G').replace('2','D').replace('3','E').replace('4','A').replace('5','F').replace('6','H').replace('7','K').replace('8','B'),"\t\t\t",distArray[int(i)])
+            
 #Display our table // Esta es nuestra matriz de adyacencia que tomamos como entrada para el proceso del Dijkstra
 ourGraph = Graph(9)  #Aqui el valor 9 representa la cantidad de Nodos de nuestro grafo
                # Matriz 9x9 de los Nodos de nuestro grafo

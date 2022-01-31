@@ -1,4 +1,3 @@
-#Dijkstra.py
 Dijkstra Algorithm in Python 
 This program is based on find the shortest way between nodes in a graph
 In this project we wanna find the shortest way to deliver a package using nodes as our clients.
